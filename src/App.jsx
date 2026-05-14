@@ -15,7 +15,9 @@ L.Icon.Default.mergeOptions({
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
 });
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000/api';
+const VITE_API_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:5000';
+// Ensure the URL ends with /api even if the user forgot it in the environment variable
+const API_BASE = VITE_API_URL.endsWith('/api') ? VITE_API_URL : `${VITE_API_URL}/api`;
 
 // Custom Marker Icon (SVG)
 const customIcon = new L.DivIcon({
